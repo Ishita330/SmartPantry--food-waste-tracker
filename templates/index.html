@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Pantry Item</h2>
+
+<form method="POST">
+    <label>Item Name:</label><br>
+    <input type="text" name="name" required><br>
+
+    <label>Quantity:</label><br>
+    <input type="number" name="quantity" required><br>
+
+    <label>Expiry Date:</label><br>
+    <input type="date" name="expiry_date" required><br><br>
+
+    <button type="submit">Add Item</button>
+</form>
+
+<div style="margin-top: 20px;">
+    <a href="/inventory" class="link-button">📦 View Inventory</a> |
+    <a href="/recommend" class="link-button">🍽️ Get Recipe Suggestions</a>
+</div>
+{% endblock %}

@@ -1,0 +1,413 @@
+/* General Layout */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f3f9f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1, h2 {
+    color: #2e7d32;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    font-size: 2rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Input fields */
+input, button {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+/* Search bar */
+#searchInput {
+    margin-bottom: 15px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+/* Buttons */
+button, .btn {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+button:hover, .btn:hover {
+    background-color: #388e3c;
+}
+
+/* Special buttons */
+.cleanup-btn {
+    background-color: #e74c3c;
+    padding: 10px 16px;
+    border: none;
+    font-weight: bold;
+    color: white;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+.cleanup-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Recipe Cards */
+.recipe-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.recipe-name {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #2a7c4f;
+}
+
+.ingredients {
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+/* Carbon Footprint Labels */
+.footprint,
+.carbon-label {
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+.low,
+.low-carbon {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.medium,
+.medium-carbon {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.high,
+.high-carbon {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.unknown {
+    background-color: #cce5e9;
+    color: #0c5460;
+}
+
+/* Row colors for status */
+.expired {
+    background-color: #ffdddd;
+}
+
+.expiring {
+    background-color: #fff4cc;
+}
+
+.fresh {
+    background-color: #ddffdd;
+}
+
+/* Navigation Buttons */
+.link-button {
+    padding: 10px 16px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.link-button:hover {
+    background-color: #388e3c;
+}
+
+.danger-btn {
+    background-color: #e53935;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.danger-btn:hover {
+    background-color: #b71c1c;
+}
+
+/* Navigation buttons layout */
+.nav-links {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 30px 10px;
+    }
+
+    h1, h2 {
+        font-size: 1.4rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn, button, .link-button {
+        width: 100%;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .recipe-name {
+        font-size: 1.2em;
+    }
+
+    .ingredients {
+        font-size: 0.95em;
+    }
+
+    .carbon-label {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe-card {
+        padding: 15px;
+    }
+
+    h1, h2 {
+        font-size: 1.2rem;
+    }
+
+    .recipe-name {
+        font-size: 1.1em;
+    }
+
+    .ingredients {
+        font-size: 0.9em;
+    }
+
+    table, th, td {
+        font-size: 0.85em;
+    }
+
+    .carbon-label {
+        font-size: 0.8rem;
+    }
+}
+
+/*login_and_register_pages*/
+
+/* --- Login/Register Scoped Styles --- */
+.auth-page {
+    height: 100vh;
+    background: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-page .auth-container {
+    width: 900px;
+    height: 500px;
+    display: flex;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.auth-page .left-side {
+    flex: 1;
+    background: url('../static/download.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.auth-page .overlay {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    right: 20px;
+    color: #333;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.auth-page .overlay h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.auth-page .overlay p {
+    font-size: 16px;
+    color: #444;
+}
+
+.auth-page .right-side {
+    flex: 1;
+    padding: 50px 40px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-page .right-side h2 {
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.auth-page form label {
+    display: block;
+    margin: 15px 0 5px;
+    color: #333;
+}
+
+.auth-page input[type="text"],
+.auth-page input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; /* extra space for the eye icon */
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.auth-page .password-container {
+    position: relative;
+}
+
+.auth-page .password-container .toggle-password {
+    position: absolute;
+    top: 40%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+}
+
+.auth-page button[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.auth-page button:hover {
+    background-color: #43a047;
+}
+
+.auth-page form p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.auth-page form a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.auth-page form a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .auth-page input[type="text"],
+    .auth-page input[type="password"] {
+        font-size: 14px;
+        padding: 12px 10px;
+    }
+
+    .toggle-password {
+        right: 8px;
+        top: 42%; /* fine-tune based on your layout */
+        font-size: 16px;
+    }
+
+    .auth-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .left-side, .right-side {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .auth-page .right-side {
+        text-align: center;
+    }
+}

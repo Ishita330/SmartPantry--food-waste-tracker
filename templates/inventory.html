@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h2>📦 Your Pantry</h2>
+
+  <input type="text" id="searchInput" placeholder="🔍 Search pantry..." onkeyup="filterTable()" class="search-input">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Expiry Date</th>
+        <th>Days Left</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in items %}
+      <tr class="{% if item.days_left < 0 %}expired{% elif item.days_left <= 3 %}expiring{% else %}fresh{% endif %}">
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.expiry_date }}</td>
+        <td>{{ item.days_left }}</td>
+        <td>
+          {% if item.days_left < 0 %}
+            ❌ Expired
+          {% elif item.days_left <= 3 %}
+            ⚠️ Expiring Soon
+          {% else %}
+            ✅ Fresh
+          {% endif %}
+        </td>
+        <td>
+          <form action="/delete/{{ item.id }}" method="post">
+            <button type="submit" class="danger-btn">🗑️ Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <form action="/cleanup" method="POST" onsubmit="return confirm('Are you sure you want to remove all expired items?')">
+    <button type="submit" class="cleanup-btn">🧹 Remove Expired Items</button>
+  </form>
+
+  <div class="nav-links">
+    <a href="/" class="link-button">➕ Add More Items</a>
+    <a href="/recommend" class="link-button">🍽️ Get Recipe Suggestions</a>
+    <a href="/export" class="link-button">⬇️ Export Pantry as CSV</a>
+    <a href="/import" class="link-button">📤 Import Pantry from CSV</a>
+    <a href="/chart" class="link-button">📊 View Expiry Chart</a>
+  </div>
+</div>
+
+<script>
+function filterTable() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const rows = document.querySelectorAll("tbody tr");
+  rows.forEach(row => {
+    const name = row.cells[0].textContent.toLowerCase();
+    row.style.display = name.includes(input) ? "" : "none";
+  });
+}
+</script>
+{% endblock %}

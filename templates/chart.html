@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>📊 Expiry Chart</h2>
+
+<canvas id="expiryChart" width="400" height="300"></canvas>
+
+<!-- Load Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('expiryChart').getContext('2d');
+const expiryChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ labels | tojson }},
+        datasets: [{
+            label: 'Items by Expiry Range',
+            data: {{ values | tojson }},
+            backgroundColor: [
+                '#e53935',  // Today
+                '#fb8c00',  // Next 3 Days
+                '#fdd835',  // 4–7 Days
+                '#43a047'   // 8+ Days
+            ],
+            borderRadius: 6
+        }]
+    },
+    options: {
+        plugins: {
+            legend: { display: false }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        }
+    }
+});
+</script>
+
+<a href="/inventory">← Back to Inventory</a>
+{% endblock %}
