@@ -225,20 +225,9 @@ def recommend():
     'pizza': 'high', 'burger': 'high', 'mayo': 'high'
 }
 
-    csv_url = 'https://drive.google.com/uc?export=download&id=1Ssh0OQX8JtiAmUKDtvUowzlb1Lr0ZGNG'
-    csv_path = 'recipes_data.csv'
-
-    # Download if file doesn't exist
-    if not os.path.exists(csv_path):
-        print("Downloading recipes_data.csv...")
-        r = requests.get(csv_url)
-        with open(csv_path, 'wb') as f:
-            f.write(r.content)
-
-    # Now load the CSV
-    df = pd.read_csv(csv_path)
-
-    df = df[['name', 'ingredients']]
+    # Load the small preprocessed CSV file
+    df = pd.read_csv('recipes_sample.csv')
+    df = df[['name', 'ingredients']]  # Optional: Only if needed
 
     # Load pantry items from DB
     conn = sqlite3.connect('pantry.db')
