@@ -6,10 +6,13 @@ import sqlite3
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
+import os
+import requests
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace with a secure random key
+
+app.secret_key = os.getenv('SECRET_KEY', 'dev_key')
+  # Replace with a secure random key
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -222,8 +225,19 @@ def recommend():
     'pizza': 'high', 'burger': 'high', 'mayo': 'high'
 }
 
-    # Load recipes
-    df = pd.read_csv('recipes_sample.csv')
+    csv_url = 'https://drive.google.com/uc?export=download&id=1Ssh0OQX8JtiAmUKDtvUowzlb1Lr0ZGNG'
+    csv_path = 'recipes_data.csv'
+
+    # Download if file doesn't exist
+    if not os.path.exists(csv_path):
+        print("Downloading recipes_data.csv...")
+        r = requests.get(csv_url)
+        with open(csv_path, 'wb') as f:
+            f.write(r.content)
+
+    # Now load the CSV
+    df = pd.read_csv(csv_path)
+
     df = df[['name', 'ingredients']]
 
     # Load pantry items from DB
